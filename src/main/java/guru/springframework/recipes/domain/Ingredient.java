@@ -41,6 +41,10 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
+    public UnitOfMeasure getUnitOfMeasure() {
+        return this.uom;
+    }
+
     public String getUOM() {
         return this.uom.getDescription();
     }
