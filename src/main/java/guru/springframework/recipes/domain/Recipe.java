@@ -43,6 +43,10 @@ public class Recipe {
 
     private Set<Category> categories = new HashSet<>();
 
+    public String getNotes() {
+        return this.notes.getRecipeNotes();
+    }
+
     public void setNotes(Notes notes) {
         this.notes = notes;
         notes.setRecipe(this);

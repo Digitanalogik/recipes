@@ -95,7 +95,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.setDescription("Perfect Guacamole");
         guacRecipe.setPrepTime(10);
         guacRecipe.setCookTime(0);
+        guacRecipe.setServings(5);
         guacRecipe.setDifficulty(Difficulty.EASY);
+        guacRecipe.setSource("Simply Recipes");
+        guacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
         guacRecipe.setDirections("1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. (See How to Cut and Peel an Avocado.) Place in a bowl.\n" +
                 "\n" +
                 "2 Mash with a fork: Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)\n" +
@@ -140,7 +143,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         skullRecipe.setDescription("Pääkallopata");
         skullRecipe.setPrepTime(5);
         skullRecipe.setCookTime(15);
+        skullRecipe.setServings(4);
         skullRecipe.setDifficulty(Difficulty.EASY);
+        skullRecipe.setSource("Tatun keittiö");
+        skullRecipe.setUrl("http://localhost:8080/");
+
         skullRecipe.setDirections("1 Valitse sekalainen määrä kaapista löytyviä raaka-aineita.\n" +
                 "\n" +
                 "2 Pilko ainekset ja heitä paistinpannuun.\n" +
