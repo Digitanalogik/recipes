@@ -21,7 +21,7 @@
         <h4 th:text="${recipe.description} + ' (' + ${recipe.servings} + ' servings)'">Recipe Name Here!</h4>
       </div>
       <div class="card-body">
-        <p class="card-text" th:text="${recipe.getNotes()}">Some example text about the current recipe.</p>
+        <p class="card-text" th:text="${recipe.getRecipeNotes()}">Some example text about the current recipe.</p>
         <div class="card-columns">
 
           <div class="card bg-light">
@@ -80,7 +80,7 @@
         </div>
         <div class="card-body">
           <ul class="card-text">
-            <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.amount} + ' ' + ${ingredient.getUOM()} + ' ' + ${ingredient.description}"></li>
+            <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.amount} + ' ' + ${ingredient.getUom().getDescription()} + ' ' + ${ingredient.description}"></li>
           </ul>
           </p>
         </div>
