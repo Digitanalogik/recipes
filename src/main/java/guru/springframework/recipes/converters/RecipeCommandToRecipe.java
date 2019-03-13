@@ -4,7 +4,9 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import guru.springframework.recipes.commands.NotesCommand;
 import guru.springframework.recipes.commands.RecipeCommand;
+import guru.springframework.recipes.domain.Notes;
 import guru.springframework.recipes.domain.Recipe;
 import lombok.Synchronized;
 
@@ -41,11 +43,14 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
         recipe.setServings(source.getServings());
         recipe.setSource(source.getSource());
         recipe.setUrl(source.getUrl());
-        recipe.setNotes(notesConverter.convert(source.getNotes()));
+
+        NotesCommand sourceNotes = source.getNotes();
+        Notes convertedNotes = notesConverter.convert(sourceNotes);
+        recipe.setNotes(convertedNotes);
 
         if (source.getCategories() != null && source.getCategories().size() > 0){
             source.getCategories()
-                    .forEach( category -> recipe.getCategories().add(categoryConverter.convert(category)));
+                    .forEach( category -> recipe.addCategory(categoryConverter.convert(category)));
         }
 
         if (source.getIngredients() != null && source.getIngredients().size() > 0){

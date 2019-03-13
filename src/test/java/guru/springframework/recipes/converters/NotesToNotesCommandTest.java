@@ -34,7 +34,7 @@ public class NotesToNotesCommandTest {
 
         //then
         assertEquals(ID_VALUE, notesCommand.getId());
-        assertEquals(RECIPE_NOTES, notesCommand.getNotes());
+        assertEquals(RECIPE_NOTES, notesCommand.getRecipeNotes());
     }
 
     @Test

@@ -16,6 +16,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 public class RecipeCommandToRecipeTest {
     public static final Long RECIPE_ID = 1L;
     public static final Integer COOK_TIME = Integer.valueOf("5");
@@ -36,19 +38,21 @@ public class RecipeCommandToRecipeTest {
 
     @Before
     public void setUp() throws Exception {
-        this.converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
+        converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
                 new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
                 new NotesCommandToNotes());
     }
 
     @Test
     public void testNullObject() throws Exception {
-        assertNull(this.converter.convert(null));
+        assertNull(converter.convert(null));
     }
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(this.converter.convert(new RecipeCommand()));
+        RecipeCommand emptyObject = new RecipeCommand();
+        Recipe convertedRecipe = converter.convert(emptyObject);
+        assertNotNull(convertedRecipe);
     }
 
     @Test
@@ -89,7 +93,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.getIngredients().add(ingredient2);
 
         //when
-        Recipe recipe  = this.converter.convert(recipeCommand);
+        Recipe recipe  = converter.convert(recipeCommand);
 
         assertNotNull(recipe);
         assertEquals(RECIPE_ID, recipe.getId());

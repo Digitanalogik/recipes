@@ -40,12 +40,13 @@ public class Ingredient {
         this.uom = uom;
         this.recipe = recipe;
     }
-
+/*
     public UnitOfMeasure getUnitOfMeasure() {
         return this.uom;
     }
 
-    public String getUOM() {
+    public String getUnitOfMeasureString() {
         return this.uom.getDescription();
     }
+*/
 }

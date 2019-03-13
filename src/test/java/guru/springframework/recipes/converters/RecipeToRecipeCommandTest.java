@@ -2,6 +2,7 @@ package guru.springframework.recipes.converters;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import guru.springframework.recipes.commands.RecipeCommand;
@@ -29,7 +30,7 @@ public class RecipeToRecipeCommandTest {
     public static final Long NOTES_ID = 9L;
     RecipeToRecipeCommand converter;
 
-    @Test
+    @Before
     public void setUp() throws Exception {
         converter = new RecipeToRecipeCommand(
                 new CategoryToCategoryCommand(),
