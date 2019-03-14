@@ -23,7 +23,7 @@
             <input type="hidden" th:field="*{id}" />
 
             <row>
-              <div class="col-md-3 form-group">
+              <div class="col-md-12 form-group">
                 <label for="recipeDescription">Recipe Description:</label>
                 <input id="recipeDescription" type="text" class="form-control" th:field="*{description}" />
               </div>
@@ -43,9 +43,6 @@
                 <label for="recipeCookTime">Cooking Time:</label>
                 <input id="recipeCookTime" type="text" class="form-control" th:field="*{cookTime}" />
               </div>
-            </row>
-
-            <row>
               <div class="col-md-3 form-group">
                 <label for="recipePrepTime">Preparation Time:</label>
                 <input id="recipePrepTime" type="text" class="form-control" th:field="*{prepTime}" />
@@ -53,7 +50,12 @@
             </row>
 
             <row>
-              <div class="col-md-3 form-group">
+              <div class="col-md-3 form-group" >
+                <label for="recipePrepTime">Servings:</label>
+                <input id="recipePrepTime" type="text" class="form-control" th:field="*{servings}" />
+              </div>
+
+              <div class="col-md-3 form-group" >
                 <label for="recipeDifficulty">Difficulty:</label>
                 <select id="recipeDifficulty" class="form-control">
                   <option>Easy</option>
@@ -63,6 +65,51 @@
               </div>
             </row>
 
+            <row>
+              <div class="col-md-3 form-group" style="float: left">
+                <label for="recipePrepTime">Source:</label>
+                <input id="recipePrepTime" type="text" class="form-control" th:field="*{source}" />
+              </div>
+              <div class="col-md-6 form-group"  style="float: left">
+                <label for="recipePrepTime">URL:</label>
+                <input id="recipePrepTime" type="text" class="form-control" th:field="*{url}" />
+              </div>
+            </row>
+
+            <row>
+              <div class="col-md-11">
+                <label for="recipeDescription">Ingredients:</label>
+                <input id="recipeDescription" type="text" class="form-control" th:field="*{description}" />
+              </div>
+              <div class="col col-md-1">
+                <a class="btn btn-primary" href="#" role="button">Edit</a>
+              </div>
+            </row>
+
+            <div class="row">
+              <div class="col-md-12">
+                <ul>
+                  <li th:each="ingredient : ${recipe.ingredients}"
+                      th:text="${ingredient.getAmount() + ingredient.uom.getDescription() + ' - ' + ingredient.getDescription()}">[Ingredients]</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <label for="recipeDirections">Directions:</label>
+                <textarea class="form-control" id="recipeDirections" rows="3" th:field="*{directions}"></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <label for="recipeNotes">Notes:</label>
+                <textarea id="recipeNotes" class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
 
         </div>
