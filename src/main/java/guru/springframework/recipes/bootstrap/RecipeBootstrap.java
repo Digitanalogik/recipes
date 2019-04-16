@@ -170,8 +170,6 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         recipes.add(skullRecipe);
 
-
-
         return recipes;
     }
 

@@ -25,12 +25,15 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
             return null;
         }
 
-        final IngredientCommand ingredient = new IngredientCommand();
-        ingredient.setId(source.getId());
-        ingredient.setAmount(source.getAmount());
-        ingredient.setDescription(source.getDescription());
-        ingredient.setUom(uomConverter.convert(source.getUom()));
+        final IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setId(source.getId());
+        if (source.getRecipe() != null) {
+            ingredientCommand.setRecipeId(source.getRecipe().getId());
+        }
+        ingredientCommand.setAmount(source.getAmount());
+        ingredientCommand.setDescription(source.getDescription());
+        ingredientCommand.setUom(uomConverter.convert(source.getUom()));
 
-        return ingredient;
+        return ingredientCommand;
     }
 }
