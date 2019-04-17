@@ -28,7 +28,7 @@ public class IngredientCommandToIngredientTest {
     }
 
     @Test
-    public void testNullParameter() throws Exception {
+    public void testNullObject() throws Exception {
         assertNull(converter.convert(null));
     }
 
@@ -39,7 +39,7 @@ public class IngredientCommandToIngredientTest {
 
     @Test
     public void convert() throws Exception {
-        //given
+        // Given
         IngredientCommand command = new IngredientCommand();
         command.setId(ID_VALUE);
         command.setDescription(DESCRIPTION);
@@ -48,16 +48,36 @@ public class IngredientCommandToIngredientTest {
         unitOfMeasureCommand.setId(UOM_ID);
         command.setUom(unitOfMeasureCommand);
 
-        //when
+        // When
         Ingredient ingredient = converter.convert(command);
 
-        //then
+        // Then
         assertNotNull(ingredient);
         assertNotNull(ingredient.getUom());
         assertEquals(ID_VALUE, ingredient.getId());
         assertEquals(AMOUNT, ingredient.getAmount());
         assertEquals(DESCRIPTION, ingredient.getDescription());
         assertEquals(UOM_ID, ingredient.getUom().getId());
+    }
+
+    @Test
+    public void convertWithNullUOM() throws Exception {
+        // Given
+        IngredientCommand command = new IngredientCommand();
+        command.setId(ID_VALUE);
+        command.setAmount(AMOUNT);
+        command.setDescription(DESCRIPTION);
+        UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
+
+        // When
+        Ingredient ingredient = converter.convert(command);
+
+        // Then
+        assertNotNull(ingredient);
+        assertNull(ingredient.getUom());
+        assertEquals(ID_VALUE, ingredient.getId());
+        assertEquals(AMOUNT, ingredient.getAmount());
+        assertEquals(DESCRIPTION, ingredient.getDescription());
     }
 
 

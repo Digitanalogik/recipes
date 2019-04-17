@@ -24,7 +24,6 @@ public class IngredientToIngredientCommandTest {
     public static final Long UOM_ID = new Long(2L);
     public static final Long ID_VALUE = new Long(1L);
 
-
     IngredientToIngredientCommand converter;
 
     @Before
@@ -44,26 +43,27 @@ public class IngredientToIngredientCommandTest {
 
     @Test
     public void testConvertNullUOM() throws Exception {
-        //given
+        // Given
         Ingredient ingredient = new Ingredient();
         ingredient.setId(ID_VALUE);
         ingredient.setRecipe(RECIPE);
         ingredient.setAmount(AMOUNT);
         ingredient.setDescription(DESCRIPTION);
         ingredient.setUom(null);
-        //when
+
+        // When
         IngredientCommand ingredientCommand = converter.convert(ingredient);
-        //then
+
+        // Then
         assertNull(ingredientCommand.getUom());
         assertEquals(ID_VALUE, ingredientCommand.getId());
-        // assertEquals(RECIPE, ingredientCommand.get);
         assertEquals(AMOUNT, ingredientCommand.getAmount());
         assertEquals(DESCRIPTION, ingredientCommand.getDescription());
     }
 
     @Test
     public void testConvertWithUom() throws Exception {
-        //given
+        // Given
         Ingredient ingredient = new Ingredient();
         ingredient.setId(ID_VALUE);
         ingredient.setRecipe(RECIPE);
@@ -75,10 +75,10 @@ public class IngredientToIngredientCommandTest {
 
         ingredient.setUom(uom);
 
-        //when
+        // When
         IngredientCommand ingredientCommand = converter.convert(ingredient);
 
-        //then
+        // Then
         assertEquals(ID_VALUE, ingredientCommand.getId());
         assertNotNull(ingredientCommand.getUom());
         assertEquals(UOM_ID, ingredientCommand.getUom().getId());

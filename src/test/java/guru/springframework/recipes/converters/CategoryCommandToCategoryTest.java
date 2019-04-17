@@ -31,15 +31,15 @@ public class CategoryCommandToCategoryTest {
 
     @Test
     public void convert() throws Exception {
-        //given
+        // Given
         CategoryCommand categoryCommand = new CategoryCommand();
         categoryCommand.setId(ID_VALUE);
         categoryCommand.setDescription(DESCRIPTION);
 
-        //when
+        // When
         Category category = conveter.convert(categoryCommand);
 
-        //then
+        // Then
         assertEquals(ID_VALUE, category.getId());
         assertEquals(DESCRIPTION, category.getDescription());
     }

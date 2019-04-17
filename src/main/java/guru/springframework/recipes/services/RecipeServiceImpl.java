@@ -7,12 +7,11 @@ import guru.springframework.recipes.domain.Recipe;
 import guru.springframework.recipes.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.transaction.Transactional;
 
 @Slf4j
 @Service
