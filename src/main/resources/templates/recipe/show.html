@@ -17,10 +17,20 @@
     <div class="col col-md-6">
       <div class="card border-primary">
       <div class="card-header text-light bg-primary">
+        <div class="row">
+          <div class="col-md-8">
+            <h4 th:text="${recipe.description} + ' (' + ${recipe.servings} + ' servings)'">Recipe Name Here!</h4>
+          </div>
+          <div class="col-md-4">
+            <a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/image'}" class="btn btn-secondary" role="button" style="display: inline;">Change image</a>
+          </div>
+        </div>
         <!--/*@thymesVar id="recipe" type="guru.springframework.recipes.domain.Recipe"*/-->
-        <h4 th:text="${recipe.description} + ' (' + ${recipe.servings} + ' servings)'">Recipe Name Here!</h4>
       </div>
       <div class="card-body">
+        <img src="../../static/images/guacamole-other.jpg"
+             th:src="@{/images/guacamole-other.jpg}"
+             style="width: 100%; height: auto; margin-bottom: 10px;">
         <p class="card-text" th:text="${recipe.getRecipeNotes()}">Some example text about the current recipe.</p>
         <div class="card-columns">
 
