@@ -19,7 +19,7 @@
           <h4>Edit Recipe Information</h4>
         </div>
         <div class="card-body">
-          <form th:object="${recipe}" th:action="@{/recipe/}">
+          <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
             <input type="hidden" th:field="*{id}" />
 
             <row>
@@ -57,10 +57,11 @@
 
               <div class="col-md-3 form-group" >
                 <label for="recipeDifficulty">Difficulty:</label>
-                <select id="recipeDifficulty" class="form-control">
-                  <option>Easy</option>
-                  <option>Medium</option>
-                  <option>Hard</option>
+                <select id="recipeDifficulty" class="form-control" th:field="*{difficulty}">
+                  <option th:each="difficultyValue : ${T(guru.springframework.recipes.domain.Difficulty).values()}"
+                          th:value="${difficultyValue.name()}"
+                          th:text="${difficultyValue.name()}">
+                    value</option>
                 </select>
               </div>
             </row>
