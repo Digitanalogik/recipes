@@ -29,7 +29,7 @@
       </div>
       <div class="card-body">
         <img src="../../static/images/guacamole-other.jpg"
-             th:src="@{/images/guacamole-other.jpg}"
+             th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
              style="width: 100%; height: auto; margin-bottom: 10px;">
         <p class="card-text" th:text="${recipe.getRecipeNotes()}">Some example text about the current recipe.</p>
         <div class="card-columns">
